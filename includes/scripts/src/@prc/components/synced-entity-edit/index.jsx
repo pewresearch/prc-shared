@@ -14,14 +14,19 @@ import {
  */
 import { useSyncedEntityPreviewEdit } from '@prc/hooks';
 
+function isBlockListEmpty(blocks) {
+	return !blocks.length;
+}
+
 function SyncedEntityPreview({
 	blocks,
 	labels,
 	isShrinkWrapped,
 	stablePreviewWidth,
 	previewResizeListener,
+	isEmpty = isBlockListEmpty,
 }) {
-	if (!blocks.length) {
+	if (isEmpty(blocks)) {
 		return <p>{labels.emptyLabel}</p>;
 	}
 
@@ -73,6 +78,7 @@ export default function SyncedEntityEdit({
 	Placeholder,
 	placeholderProps = {},
 	controlsProps = {},
+	isEmpty,
 }) {
 	const { ref, align } = attributes;
 
@@ -175,6 +181,7 @@ export default function SyncedEntityEdit({
 					isShrinkWrapped={isShrinkWrapped}
 					stablePreviewWidth={stablePreviewWidth}
 					previewResizeListener={previewResizeListener}
+					isEmpty={isEmpty}
 				/>
 			</div>
 		</RecursionProvider>

@@ -1,5 +1,5 @@
 
-> @prc/shared@1.4.4 build
+> @prc/shared@1.5.0 build
 > echo '@prc/shared is a meta-package; sub-packages built via turbo dependency graph'
 
 @prc/shared is a meta-package; sub-packages built via turbo dependency graph
