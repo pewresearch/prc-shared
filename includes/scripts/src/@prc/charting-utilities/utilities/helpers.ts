@@ -461,6 +461,29 @@ const getCustomLabelText = (
 };
 
 /**
+ * Display text a data point carries for one series in
+ * `__displayValues[category]`, or null when it carries none.
+ *
+ * It stands in for the formatted number only. Label and tooltip overrides
+ * (`__labelText`, `__labels`, `__tooltips`) still take precedence.
+ *
+ * @param dataPoint The data point object
+ * @param key       The category key
+ * @return Display text, or null
+ */
+const getDisplayValue = (
+	dataPoint: Record<string, unknown> | null | undefined,
+	key: unknown
+): string | null => {
+	const displayValues = dataPoint?.__displayValues;
+	if (!displayValues || typeof displayValues !== 'object') {
+		return null;
+	}
+	const text = (displayValues as Record<string, unknown>)[String(key)];
+	return typeof text === 'string' && text !== '' ? text : null;
+};
+
+/**
  * Whether a cell value is absent: `undefined`, `null`, or `''`.
  * Zero and `false` are real values.
  *
@@ -624,6 +647,7 @@ export {
 	getCustomLabelStyle,
 	getCustomLabelText,
 	getCustomTooltip,
+	getDisplayValue,
 	getGroupValue,
 	getLabelOutlineStroke,
 	hasCategoryValue,

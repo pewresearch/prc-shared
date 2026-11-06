@@ -51,6 +51,10 @@ if ( function_exists( '\PRC\Primitives\Post_Publish_Pipeline\boot' ) ) {
 	\PRC\Primitives\Post_Publish_Pipeline\boot();
 }
 
+if ( function_exists( '\PRC\Primitives\Signed_Fetch\boot' ) ) {
+	\PRC\Primitives\Signed_Fetch\boot();
+}
+
 /**
  * Helper utilities
  */

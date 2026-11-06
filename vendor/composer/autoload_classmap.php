@@ -474,6 +474,7 @@ return array(
     'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Resolved_Post' => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Resolved_Post.php',
     'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Resolved_Post_URL' => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Resolved_Post_URL.php',
     'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Unresolved_Post_URL' => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Unresolved_Post_URL.php',
+    'PRC\\Primitives\\Post_Publish_Pipeline\\Pre_Publish' => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Pre_Publish.php',
     'Pdo\\Dblib' => $vendorDir . '/symfony/polyfill-php84/Resources/stubs/Pdo/Dblib.php',
     'Pdo\\Firebird' => $vendorDir . '/symfony/polyfill-php84/Resources/stubs/Pdo/Firebird.php',
     'Pdo\\Mysql' => $vendorDir . '/symfony/polyfill-php84/Resources/stubs/Pdo/Mysql.php',

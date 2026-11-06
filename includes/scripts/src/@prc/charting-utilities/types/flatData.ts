@@ -11,6 +11,8 @@ export type FlatData = {
 	isHighlighted?: boolean;
 	/** Authored cell text, per column, when numeric coercion changed its form. */
 	__raw?: Record<string, string>;
+	/** Finished tooltip `{{value}}` text, per series, in place of the formatted number. */
+	__displayValues?: Record<string, string>;
 	label?: string;
 	tooltip?: string;
 	[propName: string]: any;

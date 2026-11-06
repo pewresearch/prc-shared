@@ -1,5 +1,5 @@
 import type { FlatData } from '../types/flatData';
-import type { Labels } from '../types/labels';
+import type { DeclutterLabelInput, Labels } from '../types/labels';
 import {
 	getCustomLabel,
 	getCustomLabelText,
@@ -13,7 +13,6 @@ import {
 	getLabelMaxWidth,
 	hasAuthorLabelOverride,
 } from './helpers';
-import type { DeclutterLabelInput } from '../types/labels';
 
 /** Horizontal base offset (px) for `firstLastLabelLayout: 'outside'`. */
 export const FIRST_LAST_OUTSIDE_BASE_DX = 5;
@@ -27,7 +26,7 @@ export function getLineLabelContent(
 ): { content: string; defaultLabel: string } {
 	const customLabelText = getCustomLabelText(d, category);
 	const customLabel = getCustomLabel(d, category);
-	const defaultLabel = getLabelFormat(d[category], category, labels, null);
+	const defaultLabel = getLabelFormat(d[category], category, labels, null, d);
 
 	let content = '';
 	if (customLabelText) {
@@ -53,6 +52,12 @@ export function getLineLabelContent(
  * (5, 0) for the last, with matching text anchors. A series with fewer than two
  * points has no first/last pair, so it keeps the base placement.
  * `labelPositionDX` / `labelPositionDY` always layer on top of that base.
+ *
+ * @param root0                    Placement inputs.
+ * @param root0.pointIndex         Index of the point in its series.
+ * @param root0.pointCount         Number of points in the series.
+ * @param root0.labels             Label config.
+ * @param root0.fallbackTextAnchor Text anchor to use before the config's.
  */
 export function getFirstLastLabelPlacement({
 	pointIndex,

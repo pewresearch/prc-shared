@@ -1906,6 +1906,10 @@ return array(
 		'version' => '2.4.0.0',
 		'path'    => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Unresolved_Post_URL.php'
 	),
+	'PRC\\Primitives\\Post_Publish_Pipeline\\Pre_Publish' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Pre_Publish.php'
+	),
 	'Path_Processor' => array(
 		'version' => '5.0.17',
 		'path'    => $vendorDir . '/automattic/jetpack-autoloader/src/class-path-processor.php'

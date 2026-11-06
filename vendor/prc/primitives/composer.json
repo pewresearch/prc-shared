@@ -14,7 +14,8 @@
 			"PRC\\Primitives\\HTML_Processors\\": "src/html-processors/",
 			"PRC\\Primitives\\DelayedAction\\": "src/delayed-action/",
 			"PRC\\Primitives\\Feature_Flags\\": "src/feature-flags/",
-			"PRC\\Primitives\\Post_Publish_Pipeline\\": "src/post-publish-pipeline/"
+			"PRC\\Primitives\\Post_Publish_Pipeline\\": "src/post-publish-pipeline/",
+			"PRC\\Primitives\\Signed_Fetch\\": "src/signed-fetch/"
 		},
 		"files": [
 			"src/block-utils/functions.php",
@@ -22,7 +23,8 @@
 			"src/url-helper/url-helper.php",
 			"src/term-data-store/term-data-store.php",
 			"src/feature-flags/functions.php",
-			"src/post-publish-pipeline/functions.php"
+			"src/post-publish-pipeline/functions.php",
+			"src/signed-fetch/functions.php"
 		]
 	},
 	"config": {

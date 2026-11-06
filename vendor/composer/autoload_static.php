@@ -650,6 +650,7 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
         'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Resolved_Post' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Resolved_Post.php',
         'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Resolved_Post_URL' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Resolved_Post_URL.php',
         'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Unresolved_Post_URL' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Unresolved_Post_URL.php',
+        'PRC\\Primitives\\Post_Publish_Pipeline\\Pre_Publish' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Pre_Publish.php',
         'Pdo\\Dblib' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Dblib.php',
         'Pdo\\Firebird' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Firebird.php',
         'Pdo\\Mysql' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Mysql.php',

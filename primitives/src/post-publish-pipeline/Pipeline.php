@@ -73,6 +73,36 @@ final class Pipeline {
 		add_filter( 'rest_post_query', self::$instance->add_post_parent_request_to_rest_api( ... ), 10, 2 );
 		add_action( 'wp_after_insert_post', self::$instance->process_post_publish_pipeline( ... ), 10, 4 );
 		add_action( self::ASYNC_DISPATCH_HOOK, self::$instance->dispatch_async_event( ... ), 10, 3 );
+		add_action( Pre_Publish::HOOK, Pre_Publish::run( ... ), 10, 1 );
+	}
+
+	/**
+	 * Fire the pre-publish hooks for a post now, without checking its schedule.
+	 *
+	 * @param int $post_id Post ID.
+	 */
+	public static function dispatch_pre_publish( int $post_id ): void {
+		$post = get_post( $post_id );
+		if ( ! $post instanceof WP_Post || null === self::$instance || in_array( $post->post_status, array( 'publish', 'trash' ), true ) ) {
+			return;
+		}
+
+		$ref_post = self::$instance->setup_extra_wp_post_object_fields( $post );
+		if ( is_wp_error( $ref_post ) ) {
+			return;
+		}
+
+		$has_blocks = has_blocks( $post );
+		$post_type  = $post->post_type;
+
+		/**
+		 * Fires a lead time before a scheduled post publishes. The post and anything it references are still unpublished.
+		 *
+		 * @param object $ref_post   The post object with extra fields.
+		 * @param bool   $has_blocks Whether the post content has blocks.
+		 */
+		do_action( 'prc_platform_on_pre_publish', $ref_post, $has_blocks );
+		do_action( "prc_platform_on_{$post_type}_pre_publish", $ref_post, $has_blocks );
 	}
 
 	public static function enqueue_async_event( int $post_id, string $event ): void {
@@ -381,6 +411,8 @@ final class Pipeline {
 		) ) {
 			return;
 		}
+
+		Pre_Publish::reconcile( $post_obj_now );
 
 		$prior_status   = is_object( $post_obj_before ) && property_exists( $post_obj_before, 'post_status' ) ? $post_obj_before->post_status : null;
 		$current_status = $post_obj_now->post_status;

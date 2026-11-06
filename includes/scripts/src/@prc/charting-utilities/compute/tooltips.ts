@@ -1,6 +1,6 @@
 import { DataRender } from '../types/dataRender';
 import { Layout } from '../types/layout';
-import { decodeHtmlEntities } from '../utilities/helpers';
+import { decodeHtmlEntities, getDisplayValue } from '../utilities/helpers';
 import {
 	formatMinDisplayValue,
 	selectFormattedNumber,
@@ -24,11 +24,22 @@ type TooltipPoint = {
 	color?: any;
 	/** Full flat row for arbitrary `{{key}}` template tokens. */
 	data?: Record<string, unknown>;
+	/**
+	 * Series key for the `__displayValues` lookup when `category` does not hold
+	 * it, as on maps, where `category` feeds the `{{column}}` token instead.
+	 */
+	series?: string;
 };
 
 /**
  * Attach the flat row so rich tooltip templates can resolve arbitrary `{{key}}`
  * tokens beyond the virtual row / value / column placeholders.
+ * @param point
+ * @param point.x
+ * @param point.y
+ * @param point.category
+ * @param point.color
+ * @param row
  */
 function tooltipFormatPoint(
 	point: { x: any; y: any; category: any; color?: any },
@@ -97,21 +108,20 @@ function styleTooltipString(
 			isLowerCase = true;
 			key = key.replace('.toLowerCase()', '');
 		}
-		return isColor || isBold || isLowerCase
-			? `<span style="color: ${isColor ? color : 'inherit'}; font-weight: ${
-					isBold ? 'bold' : 'normal'
-				}; text-transform: ${
-					isLowerCase ? 'lowercase' : 'none'
-				};">{{${key}}}</span>`
-			: wrapUnstyledTokens
-				? `<span>{{${key}}}</span>`
-				: match;
+		if (isColor || isBold || isLowerCase) {
+			return `<span style="color: ${isColor ? color : 'inherit'}; font-weight: ${
+				isBold ? 'bold' : 'normal'
+			}; text-transform: ${
+				isLowerCase ? 'lowercase' : 'none'
+			};">{{${key}}}</span>`;
+		}
+		return wrapUnstyledTokens ? `<span>{{${key}}}</span>` : match;
 	});
 	return formatted;
 }
 
 function formatTooltipTokenValue(value: TooltipData[string]) {
-	if (null == value || value === '') {
+	if (null === value || undefined === value || value === '') {
 		return '';
 	}
 	return decodeHtmlEntities(value.toString());
@@ -140,7 +150,7 @@ function shouldSkipRowTokenKey(key: string) {
 }
 
 function stringifyRowTokenValue(value: unknown): string | number {
-	if (null == value) {
+	if (null === value || undefined === value) {
 		return '';
 	}
 	if (typeof value === 'string' || typeof value === 'number') {
@@ -156,6 +166,7 @@ function stringifyRowTokenValue(value: unknown): string | number {
  * Drop the sign from a numeric row field. Strings keep their authored
  * formatting (trailing zeros, thousands separators) by losing the leading
  * minus rather than round-tripping through `Number`.
+ * @param value
  */
 function absoluteRowTokenValue(value: string | number): string | number {
 	if (typeof value === 'number') {
@@ -209,6 +220,9 @@ const getTooltipHeaderFormat = (
 /**
  * Format the hovered point into the token substitution bag used by both the
  * rich `template` and legacy mustache `format` paths.
+ * @param d
+ * @param config
+ * @param dataRender
  */
 function buildTooltipTokenData(
 	d: TooltipPoint,
@@ -231,6 +245,19 @@ function buildTooltipTokenData(
 		return { ...rowFields, row, column, value: d.y, floored: null };
 	}
 
+	const displayValue = getDisplayValue(d.data, d.series ?? d.category);
+	if (null !== displayValue) {
+		// A display value that opens with `<` needs the same HTML escape as a floor.
+		const escaped = displayValue.startsWith('<') ? displayValue : null;
+		return {
+			...rowFields,
+			row,
+			column,
+			value: displayValue,
+			floored: escaped,
+		};
+	}
+
 	let value: number | string = config.absoluteValue
 		? Math.abs(d.y)
 		: Number(d.y);
@@ -247,12 +274,13 @@ function buildTooltipTokenData(
 
 	return { ...rowFields, row, column, value, floored: null };
 }
-
 /**
  * `formatTooltipString` decodes entities on every value it substitutes, so
  * escaping the `<` before substitution would just be decoded back out. The
  * body is injected with dangerouslySetInnerHTML, where a bare `<` reads as
  * the start of a tag.
+ * @param body
+ * @param floored
  */
 function escapeTooltipFloor(body: string, floored: string | null) {
 	if (null === floored) {
@@ -265,6 +293,10 @@ function escapeTooltipFloor(body: string, floored: string | null) {
  * Resolve a rich HTML tooltip template: substitute `{{row}}` / `{{value}}` /
  * `{{column}}` and row-field tokens after applying legacy token modifiers and
  * running the value through the number pipeline.
+ * @param template
+ * @param d
+ * @param config
+ * @param dataRender
  */
 function resolveTooltipTemplate(
 	template: string,
@@ -286,7 +318,7 @@ const getTooltipFormat = (
 ) => {
 	// Rich HTML template wins over the legacy mustache `format` string.
 	// Default remains null so existing charts keep using `format`.
-	if (null != config.template) {
+	if (null !== config.template && undefined !== config.template) {
 		return resolveTooltipTemplate(config.template, d, config, dataRender);
 	}
 

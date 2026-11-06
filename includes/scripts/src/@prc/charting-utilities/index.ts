@@ -102,6 +102,7 @@ export {
 	isLabelVisible,
 	getCustomLabelStyle,
 	getCustomTooltip,
+	getDisplayValue,
 	getGroupValue,
 	generateElementKey,
 	resolveLabelCutoff,

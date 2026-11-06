@@ -1,4 +1,4 @@
-import { decodeHtmlEntities } from '../utilities/helpers';
+import { decodeHtmlEntities, getDisplayValue } from '../utilities/helpers';
 import {
 	formatMinDisplayValue,
 	selectFormattedNumber,
@@ -61,7 +61,8 @@ const getLabelFormat = (
 	d: any,
 	category: string,
 	config: LabelFormatConfig,
-	cutoff: number | null
+	cutoff: number | null,
+	row: Record<string, unknown> | null = null
 ) => {
 	const datum = config.absoluteValue ? Math.abs(d) : Number(d);
 
@@ -74,9 +75,13 @@ const getLabelFormat = (
 
 	// if custom label is not set, check for cutoff
 	if (cutoff === null || rounded > cutoff) {
-		const floored = formatMinDisplayValue(datum, config);
-		const numeric =
-			null !== floored ? floored : selectFormattedNumber(datum, config);
+		const displayValue = getDisplayValue(row, category);
+		const floored =
+			null === displayValue ? formatMinDisplayValue(datum, config) : null;
+		let numeric = displayValue ?? floored;
+		if (null === numeric) {
+			numeric = selectFormattedNumber(datum, config);
+		}
 
 		if (config.labelUnit) {
 			return decodeHtmlEntities(
@@ -145,8 +150,7 @@ const horizontalPositioning = (
 const verticalPositioning = (
 	bar: BarProps,
 	config: PositionProps,
-	labelCutOff: number,
-	stack: 'stacked' | 'single'
+	labelCutOff: number
 ) => {
 	const { x, y, width, height, value } = bar;
 	const { labelPositionDX, labelPositionDY, labelPositionBar } = config;
@@ -191,7 +195,7 @@ const positionBarLabel = (
 	if (orientation === 'horizontal') {
 		return horizontalPositioning(bar, config, labelCutOff, stack);
 	}
-	return verticalPositioning(bar, config, labelCutOff, stack);
+	return verticalPositioning(bar, config, labelCutOff);
 };
 
 export { getLabelProps, getLabelFormat, positionNodeLabel, positionBarLabel };
