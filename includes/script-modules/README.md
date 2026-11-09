@@ -10,18 +10,20 @@ Auto-discovers and registers ES modules from the `modules/` subdirectory as Word
 
 ## Currently registered modules
 
-| Module slug | Source |
-|-------------|--------|
-| `@prc/d3` | `modules/d3/` |
+| Module slug     | Source              |
+| --------------- | ------------------- |
+| `@prc/confetti` | `modules/confetti/` |
+| `@prc/d3`       | `modules/d3/`       |
 | `@prc/topojson` | `modules/topojson/` |
 
 ## Key files
 
-| File | Purpose |
-|------|---------|
-| `class-script-modules.php` | Module discovery and registration |
-| `modules/d3/` | D3.js compiled as an ES module |
-| `modules/topojson/` | TopoJSON compiled as an ES module |
+| File                       | Purpose                                  |
+| -------------------------- | ---------------------------------------- |
+| `class-script-modules.php` | Module discovery and registration        |
+| `modules/confetti/`        | canvas-confetti compiled as an ES module |
+| `modules/d3/`              | D3.js compiled as an ES module           |
+| `modules/topojson/`        | TopoJSON compiled as an ES module        |
 
 ## Adding a new module
 
@@ -36,8 +38,8 @@ In `block.json`:
 
 ```json
 {
-  "viewScriptModule": "file:./view.js",
-  "script": []
+	"viewScriptModule": "file:./view.js",
+	"script": []
 }
 ```
 

@@ -2,7 +2,7 @@
 > @prc/topojson@1.0.0 build
 > wp-scripts build index.js --output-path=./build
 
-Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
 asset [1m[32mimportmap-polyfill.min.js[39m[22m 29.9 KiB [1m[32m[emitted][39m[22m [from: ../../../../../../node_modules/es-module-shims/dist/es-module-shims.wasm.js] [1m[32m[copied][39m[22m [1m[32m[minimized][39m[22m
@@ -12,4 +12,4 @@ Entrypoint [1mmodule[39m[22m 3.84 KiB (14.4 KiB) = [1m[32m./module.min.js[
 orphan modules 14.6 KiB [1m[33m[orphan][39m[22m 13 modules
 runtime modules 396 bytes 2 modules
 [1m./src/index.js + 6 modules[39m[22m 6.76 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 3985 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 3863 ms

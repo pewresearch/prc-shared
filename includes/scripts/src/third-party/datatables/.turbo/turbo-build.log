@@ -2,7 +2,7 @@
 > datatables@1.13.8 build
 > wp-scripts build
 
-Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
+Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
 assets by chunk 102 KiB (name: index)
@@ -17,4 +17,4 @@ runtime modules 3.06 KiB 5 modules
 built modules 469 KiB (javascript) 17.5 KiB (css/mini-extract) [1m[33m[built][39m[22m
   [1m./index.js + 5 modules[39m[22m 469 KiB [1m[31m[not cacheable][39m[22m [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
   css ../../../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!../../../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!../../../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]![1m./style.scss[39m[22m 17.5 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 10299 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 10989 ms
