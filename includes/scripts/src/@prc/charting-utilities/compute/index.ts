@@ -9,6 +9,7 @@ import { getLineProps } from './line';
 import { getChartDimensions } from './size';
 import {
 	getLocalPoint,
+	svgUserPointToViewport,
 	getTooltipFormat,
 	getTooltipHeaderFormat,
 	getTooltipVisible,
@@ -136,6 +137,7 @@ export {
 	getLineProps,
 	getChartDimensions,
 	getLocalPoint,
+	svgUserPointToViewport,
 	getTooltipFormat,
 	getTooltipHeaderFormat,
 	getTooltipVisible,

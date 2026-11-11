@@ -51,6 +51,74 @@ function tooltipFormatPoint(
 	return { ...point, data: row };
 }
 
+const SVG_NS = 'http://www.w3.org/2000/svg';
+
+function resolveSvgRoot(element: Element): SVGSVGElement | null {
+	if (element.localName === 'svg' && element.namespaceURI === SVG_NS) {
+		return element as SVGSVGElement;
+	}
+	const owner = (element as SVGGraphicsElement).ownerSVGElement;
+	return owner ?? null;
+}
+
+function getEventClientCoords(
+	event: EventType
+): { x: number; y: number } | null {
+	if ('clientX' in event && 'clientY' in event) {
+		return { x: event.clientX, y: event.clientY };
+	}
+	if (
+		'changedTouches' in event &&
+		event.changedTouches &&
+		event.changedTouches.length > 0
+	) {
+		return {
+			x: event.changedTouches[0].clientX,
+			y: event.changedTouches[0].clientY,
+		};
+	}
+	return null;
+}
+
+function asPoint(x: number, y: number): Point {
+	return {
+		x,
+		y,
+		toArray: () => [x, y],
+		value: () => ({ x, y }),
+	} as Point;
+}
+
+/**
+ * Viewport client coordinates → SVG user space (inverse screen CTM).
+ * @param svgElement
+ * @param clientX
+ * @param clientY
+ */
+function svgViewportPointToUser(
+	svgElement: Element,
+	clientX: number,
+	clientY: number
+): { x: number; y: number } | null {
+	const svg = resolveSvgRoot(svgElement);
+	if (
+		!svg ||
+		typeof svg.createSVGPoint !== 'function' ||
+		typeof svg.getScreenCTM !== 'function'
+	) {
+		return null;
+	}
+	const ctm = svg.getScreenCTM();
+	if (!ctm || typeof ctm.inverse !== 'function') {
+		return null;
+	}
+	const point = svg.createSVGPoint();
+	point.x = clientX;
+	point.y = clientY;
+	const local = point.matrixTransform(ctm.inverse());
+	return { x: local.x, y: local.y };
+}
+
 /**
  * Get local point coordinates for tooltip positioning.
  * Calculates coordinates relative to the SVG container element.
@@ -65,26 +133,68 @@ function getLocalPoint(svgElement: Element, event: EventType): Point | null {
 		return null;
 	}
 
-	// First try the standard visx approach
-	let point = localPoint(svgElement, event);
+	const client = getEventClientCoords(event);
+	if (client) {
+		const fromCtm = svgViewportPointToUser(svgElement, client.x, client.y);
+		if (fromCtm) {
+			return asPoint(fromCtm.x, fromCtm.y);
+		}
 
-	// If localPoint returns null (happens in iframes like WordPress editor),
-	// calculate coordinates manually using getBoundingClientRect
-	if (!point && 'clientX' in event && 'clientY' in event) {
 		const rect = svgElement.getBoundingClientRect();
-		const x = event.clientX - rect.left;
-		const y = event.clientY - rect.top;
-
-		// Create a Point-compatible object
-		point = {
-			x,
-			y,
-			toArray: () => [x, y],
-			value: () => ({ x, y }),
-		} as Point;
+		const x = client.x - rect.left - (svgElement.clientLeft || 0);
+		const y = client.y - rect.top - (svgElement.clientTop || 0);
+		return asPoint(x, y);
 	}
 
-	return point;
+	return localPoint(svgElement, event);
+}
+
+/**
+ * Map SVG user-space coordinates (same space as `getLocalPoint`) to viewport
+ * pixels for portaled `position: fixed` tooltips.
+ *
+ * Adding `x` to `getBoundingClientRect().left` is only correct when the SVG
+ * screen CTM has no scale. Editor iframe zoom and CSS transforms break that;
+ * `getScreenCTM()` accounts for those transforms.
+ *
+ * @param svgElement - SVG (or element inside one) that anchors the tooltip.
+ * @param x          - Horizontal coordinate in SVG user space.
+ * @param y          - Vertical coordinate in SVG user space.
+ */
+
+function svgUserPointToViewport(
+	svgElement: Element | null | undefined,
+	x: number,
+	y: number
+): { x: number; y: number } {
+	if (!svgElement) {
+		return { x, y };
+	}
+
+	// Avoid instanceof: chart nodes in the editor canvas iframe belong to a
+	// different JS realm than the bundle, so constructor checks fail spuriously.
+	const svg = resolveSvgRoot(svgElement);
+
+	if (
+		svg &&
+		typeof svg.createSVGPoint === 'function' &&
+		typeof svg.getScreenCTM === 'function'
+	) {
+		const ctm = svg.getScreenCTM();
+		if (ctm) {
+			const point = svg.createSVGPoint();
+			point.x = x;
+			point.y = y;
+			const screen = point.matrixTransform(ctm);
+			return { x: screen.x, y: screen.y };
+		}
+	}
+
+	const rect = svgElement.getBoundingClientRect();
+	return {
+		x: x + rect.left,
+		y: y + rect.top,
+	};
 }
 
 function styleTooltipString(
@@ -431,6 +541,7 @@ const getTooltipMapDeemphasisProps = (
 
 export {
 	getLocalPoint,
+	svgUserPointToViewport,
 	getTooltipHeaderFormat,
 	getTooltipFormat,
 	getTooltipVisible,

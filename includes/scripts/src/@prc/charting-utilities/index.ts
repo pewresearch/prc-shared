@@ -367,6 +367,7 @@ export {
 	getLineProps,
 	getChartDimensions,
 	getLocalPoint,
+	svgUserPointToViewport,
 	getTooltipFormat,
 	getTooltipHeaderFormat,
 	getTooltipVisible,
