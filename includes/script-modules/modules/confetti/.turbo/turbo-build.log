@@ -1,15 +1,15 @@
 
-> @prc/confetti@1.0.0 build
+> @prc/confetti@1.0.1 build
 > wp-scripts build index.js --output-path=./build
 
 Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
-asset [1m[32mimportmap-polyfill.min.js[39m[22m 29.9 KiB [1m[32m[emitted][39m[22m [from: ../../../../../../node_modules/es-module-shims/dist/es-module-shims.wasm.js] [1m[32m[copied][39m[22m [1m[32m[minimized][39m[22m
-asset [1m[32m./module.min.js[39m[22m 10.3 KiB [1m[32m[emitted][39m[22m [javascript module] [1m[32m[minimized][39m[22m (name: module) 1 related asset
-asset [1m[32m./module.min.asset.php[39m[22m 104 bytes [1m[32m[emitted][39m[22m (name: module)
+asset [1m[32mimportmap-polyfill.min.js[39m[22m 29.9 KiB [1m[33m[compared for emit][39m[22m [from: ../../../../../../node_modules/es-module-shims/dist/es-module-shims.wasm.js] [1m[32m[copied][39m[22m [1m[32m[minimized][39m[22m
+asset [1m[32m./module.min.js[39m[22m 10.3 KiB [1m[33m[compared for emit][39m[22m [javascript module] [1m[32m[minimized][39m[22m (name: module) 1 related asset
+asset [1m[32m./module.min.asset.php[39m[22m 104 bytes [1m[33m[compared for emit][39m[22m (name: module)
 Entrypoint [1mmodule[39m[22m 10.4 KiB (42.1 KiB) = [1m[32m./module.min.js[39m[22m 10.3 KiB [1m[32m./module.min.asset.php[39m[22m 104 bytes 1 auxiliary asset
 runtime modules 396 bytes 2 modules
 orphan modules 24.3 KiB [1m[33m[orphan][39m[22m 1 module
 [1m./src/index.js + 1 modules[39m[22m 24.4 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 4008 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 5235 ms

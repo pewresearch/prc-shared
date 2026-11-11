@@ -203,7 +203,7 @@ export function InnerBlocksAsContextTemplate({
 							key={contextId}
 							value={blockContext}
 						>
-							{activeBlockContextId === null || isVisible ? (
+							{isVisible ? (
 								<InnerBlocksTemplateBlocks
 									{...{
 										allowedBlocks,
