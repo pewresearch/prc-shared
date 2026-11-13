@@ -1,5 +1,5 @@
 
-> @prc/charting-utilities@3.16.2 build
+> @prc/charting-utilities@3.16.3 build
 > wp-scripts build
 
 Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
@@ -13,4 +13,4 @@ runtime modules 670 bytes 3 modules
 built modules 377 KiB [1m[33m[built][39m[22m
   [1m./index.js + 192 modules[39m[22m 356 KiB [1m[31m[not cacheable][39m[22m [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
   [1m../../../../../../../node_modules/d3-regression/dist/d3-regression.js[39m[22m 21.4 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 3790 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 20028 ms
