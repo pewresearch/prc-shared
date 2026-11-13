@@ -151,6 +151,8 @@ export {
 	withPatternPrimaryPaint,
 	withPatternStrokeWidth,
 } from './utilities/patternStyle';
+export { readPlotBandLabelRotation } from './utilities/plotBandLabel';
+export type { PlotBandLabelStyle } from './utilities/plotBandLabel';
 export type { ResolvePaintArgs } from './utilities/resolvePaint';
 export { resolveScaleNice } from './utilities/resolveScaleNice';
 export {

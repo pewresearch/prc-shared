@@ -44,3 +44,10 @@ function request_authorizes( int $post_id, string $purpose ): bool {
 function is_signed_draft_render(): bool {
 	return Signed_Fetch::is_signed_draft_render();
 }
+
+/**
+ * Whether a valid ticket authorized this request's main post, whatever its status.
+ */
+function is_signed_render(): bool {
+	return Signed_Fetch::is_signed_render();
+}

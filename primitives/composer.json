@@ -15,7 +15,8 @@
 			"PRC\\Primitives\\DelayedAction\\": "src/delayed-action/",
 			"PRC\\Primitives\\Feature_Flags\\": "src/feature-flags/",
 			"PRC\\Primitives\\Post_Publish_Pipeline\\": "src/post-publish-pipeline/",
-			"PRC\\Primitives\\Signed_Fetch\\": "src/signed-fetch/"
+			"PRC\\Primitives\\Signed_Fetch\\": "src/signed-fetch/",
+			"PRC\\Primitives\\Concurrency\\": "src/concurrency/"
 		},
 		"files": [
 			"src/block-utils/functions.php",
@@ -24,7 +25,8 @@
 			"src/term-data-store/term-data-store.php",
 			"src/feature-flags/functions.php",
 			"src/post-publish-pipeline/functions.php",
-			"src/signed-fetch/functions.php"
+			"src/signed-fetch/functions.php",
+			"src/concurrency/functions.php"
 		]
 	},
 	"config": {

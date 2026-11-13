@@ -1826,6 +1826,46 @@ return array(
 		'version' => '2.4.0.0',
 		'path'    => $vendorDir . '/prc/primitives/src/block-utils/PostContentBlockFilter.php'
 	),
+	'PRC\\Primitives\\Concurrency\\Claim_Store' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Claim_Store.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Claim_Store_Error' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Claim_Store_Error.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Claims_Command' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Claims_Command.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Lease' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Lease.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Meta_State' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Meta_State.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Meta_State_Error' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Meta_State_Error.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Options_Claim_Store' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Options_Claim_Store.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Run_Once' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Run_Once.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Run_Result' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Run_Result.php'
+	),
+	'PRC\\Primitives\\Concurrency\\Table_Claim_Store' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/Table_Claim_Store.php'
+	),
 	'PRC\\Primitives\\DelayedAction\\ActionSchedulerGateway' => array(
 		'version' => '2.4.0.0',
 		'path'    => $vendorDir . '/prc/primitives/src/delayed-action/ActionSchedulerGateway.php'
@@ -1909,6 +1949,10 @@ return array(
 	'PRC\\Primitives\\Post_Publish_Pipeline\\Pre_Publish' => array(
 		'version' => '2.4.0.0',
 		'path'    => $vendorDir . '/prc/primitives/src/post-publish-pipeline/Pre_Publish.php'
+	),
+	'PRC\\Primitives\\Signed_Fetch\\Signed_Fetch' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/signed-fetch/Signed_Fetch.php'
 	),
 	'Path_Processor' => array(
 		'version' => '5.0.17',

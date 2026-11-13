@@ -55,6 +55,10 @@ if ( function_exists( '\PRC\Primitives\Signed_Fetch\boot' ) ) {
 	\PRC\Primitives\Signed_Fetch\boot();
 }
 
+if ( function_exists( '\PRC\Primitives\Concurrency\boot' ) ) {
+	\PRC\Primitives\Concurrency\boot();
+}
+
 /**
  * Helper utilities
  */

@@ -25,6 +25,8 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
         'a973b381bd3a06d58223a84663a6e6bf' => __DIR__ . '/..' . '/prc/primitives/src/term-data-store/term-data-store.php',
         '6769b7862d6876e2818337d687c1d64f' => __DIR__ . '/..' . '/prc/primitives/src/feature-flags/functions.php',
         '0f0dc8a1ac88695cbd045c86e3ea5a55' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/functions.php',
+        '48657401447250a7960336b49491a434' => __DIR__ . '/..' . '/prc/primitives/src/signed-fetch/functions.php',
+        '0374921a0a069ed4202bb03080b2fe97' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -51,10 +53,12 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
+            'PRC\\Primitives\\Signed_Fetch\\' => 28,
             'PRC\\Primitives\\Post_Publish_Pipeline\\' => 37,
             'PRC\\Primitives\\HTML_Processors\\' => 31,
             'PRC\\Primitives\\Feature_Flags\\' => 29,
             'PRC\\Primitives\\DelayedAction\\' => 29,
+            'PRC\\Primitives\\Concurrency\\' => 27,
             'PRC\\Primitives\\BlockUtils\\' => 26,
         ),
         'I' =>
@@ -127,6 +131,10 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
+        'PRC\\Primitives\\Signed_Fetch\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/prc/primitives/src/signed-fetch',
+        ),
         'PRC\\Primitives\\Post_Publish_Pipeline\\' =>
         array (
             0 => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline',
@@ -142,6 +150,10 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
         'PRC\\Primitives\\DelayedAction\\' =>
         array (
             0 => __DIR__ . '/..' . '/prc/primitives/src/delayed-action',
+        ),
+        'PRC\\Primitives\\Concurrency\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/prc/primitives/src/concurrency',
         ),
         'PRC\\Primitives\\BlockUtils\\' =>
         array (
@@ -630,6 +642,16 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
         'PRC\\Primitives\\BlockUtils\\Lists' => __DIR__ . '/..' . '/prc/primitives/src/block-utils/Lists.php',
         'PRC\\Primitives\\BlockUtils\\Pagination' => __DIR__ . '/..' . '/prc/primitives/src/block-utils/Pagination.php',
         'PRC\\Primitives\\BlockUtils\\PostContentBlockFilter' => __DIR__ . '/..' . '/prc/primitives/src/block-utils/PostContentBlockFilter.php',
+        'PRC\\Primitives\\Concurrency\\Claim_Store' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Claim_Store.php',
+        'PRC\\Primitives\\Concurrency\\Claim_Store_Error' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Claim_Store_Error.php',
+        'PRC\\Primitives\\Concurrency\\Claims_Command' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Claims_Command.php',
+        'PRC\\Primitives\\Concurrency\\Lease' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Lease.php',
+        'PRC\\Primitives\\Concurrency\\Meta_State' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Meta_State.php',
+        'PRC\\Primitives\\Concurrency\\Meta_State_Error' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Meta_State_Error.php',
+        'PRC\\Primitives\\Concurrency\\Options_Claim_Store' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Options_Claim_Store.php',
+        'PRC\\Primitives\\Concurrency\\Run_Once' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Run_Once.php',
+        'PRC\\Primitives\\Concurrency\\Run_Result' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Run_Result.php',
+        'PRC\\Primitives\\Concurrency\\Table_Claim_Store' => __DIR__ . '/..' . '/prc/primitives/src/concurrency/Table_Claim_Store.php',
         'PRC\\Primitives\\DelayedAction\\ActionSchedulerGateway' => __DIR__ . '/..' . '/prc/primitives/src/delayed-action/ActionSchedulerGateway.php',
         'PRC\\Primitives\\DelayedAction\\DelayedAction' => __DIR__ . '/..' . '/prc/primitives/src/delayed-action/DelayedAction.php',
         'PRC\\Primitives\\DelayedAction\\JobState' => __DIR__ . '/..' . '/prc/primitives/src/delayed-action/JobState.php',
@@ -651,6 +673,7 @@ class ComposerStaticInitd4fe8702beb6897ff69f5afcd4f6b8c3
         'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Resolved_Post_URL' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Resolved_Post_URL.php',
         'PRC\\Primitives\\Post_Publish_Pipeline\\Post_Resolution\\Unresolved_Post_URL' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Post_Resolution/Unresolved_Post_URL.php',
         'PRC\\Primitives\\Post_Publish_Pipeline\\Pre_Publish' => __DIR__ . '/..' . '/prc/primitives/src/post-publish-pipeline/Pre_Publish.php',
+        'PRC\\Primitives\\Signed_Fetch\\Signed_Fetch' => __DIR__ . '/..' . '/prc/primitives/src/signed-fetch/Signed_Fetch.php',
         'Pdo\\Dblib' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Dblib.php',
         'Pdo\\Firebird' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Firebird.php',
         'Pdo\\Mysql' => __DIR__ . '/..' . '/symfony/polyfill-php84/Resources/stubs/Pdo/Mysql.php',

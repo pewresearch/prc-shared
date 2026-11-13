@@ -51,6 +51,8 @@ final class Signed_Fetch {
 
 	private static int $draft_render_post_id = 0;
 
+	private static int $signed_render_post_id = 0;
+
 	public static function boot(): void {
 		if ( self::$booted ) {
 			return;
@@ -94,6 +96,10 @@ final class Signed_Fetch {
 
 		if ( ! isset( self::$verified[ $key ] ) ) {
 			self::$verified[ $key ] = self::verify_request( $post_id, $purpose );
+
+			if ( self::$verified[ $key ] && 0 === self::$signed_render_post_id ) {
+				self::$signed_render_post_id = $post_id;
+			}
 		}
 
 		return self::$verified[ $key ];
@@ -107,6 +113,18 @@ final class Signed_Fetch {
 	 */
 	public static function is_signed_draft_render(): bool {
 		return self::$draft_render_post_id > 0;
+	}
+
+	/**
+	 * Whether this request carries a valid ticket that a consumer checked, whatever the post status.
+	 *
+	 * Set by the first successful request_authorizes() call. That covers the
+	 * main singular query and routes that serve before it runs, such as
+	 * print-engine's `/print`. The client is a render service, not a reader,
+	 * so consumers use it to skip reader analytics.
+	 */
+	public static function is_signed_render(): bool {
+		return self::$signed_render_post_id > 0;
 	}
 
 	/**
@@ -152,11 +170,11 @@ final class Signed_Fetch {
 		}
 
 		$post = $posts[0];
-		if ( ! in_array( $post->post_status, self::UNLOCKABLE_STATUSES, true ) ) {
+		if ( ! self::request_authorizes( (int) $post->ID, self::requested_purpose() ) ) {
 			return $posts;
 		}
 
-		if ( ! self::request_authorizes( (int) $post->ID, self::requested_purpose() ) ) {
+		if ( ! in_array( $post->post_status, self::UNLOCKABLE_STATUSES, true ) ) {
 			return $posts;
 		}
 
@@ -190,8 +208,9 @@ final class Signed_Fetch {
 	 * Clear request state. Tests only.
 	 */
 	public static function reset(): void {
-		self::$verified             = array();
-		self::$draft_render_post_id = 0;
+		self::$verified              = array();
+		self::$draft_render_post_id  = 0;
+		self::$signed_render_post_id = 0;
 		remove_filter( 'posts_results', array( __CLASS__, 'unlock_signed_post' ), 10 );
 	}
 

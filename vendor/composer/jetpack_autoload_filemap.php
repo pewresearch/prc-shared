@@ -78,4 +78,12 @@ return array(
 		'version' => '2.4.0.0',
 		'path'    => $vendorDir . '/prc/primitives/src/post-publish-pipeline/functions.php'
 	),
+	'48657401447250a7960336b49491a434' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/signed-fetch/functions.php'
+	),
+	'0374921a0a069ed4202bb03080b2fe97' => array(
+		'version' => '2.4.0.0',
+		'path'    => $vendorDir . '/prc/primitives/src/concurrency/functions.php'
+	),
 );

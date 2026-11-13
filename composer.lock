@@ -736,7 +736,7 @@
             "dist": {
                 "type": "path",
                 "url": "primitives",
-                "reference": "a0531c4d668ff6b1628178fb779874f01b8b6c1e"
+                "reference": "4ebb8838e69130a66e452919b708f736f4e14bf4"
             },
             "require": {
                 "dougsisk/laravel-country-state": "^5.0",
@@ -749,7 +749,9 @@
                     "PRC\\Primitives\\HTML_Processors\\": "src/html-processors/",
                     "PRC\\Primitives\\DelayedAction\\": "src/delayed-action/",
                     "PRC\\Primitives\\Feature_Flags\\": "src/feature-flags/",
-                    "PRC\\Primitives\\Post_Publish_Pipeline\\": "src/post-publish-pipeline/"
+                    "PRC\\Primitives\\Post_Publish_Pipeline\\": "src/post-publish-pipeline/",
+                    "PRC\\Primitives\\Signed_Fetch\\": "src/signed-fetch/",
+                    "PRC\\Primitives\\Concurrency\\": "src/concurrency/"
                 },
                 "files": [
                     "src/block-utils/functions.php",
@@ -757,7 +759,9 @@
                     "src/url-helper/url-helper.php",
                     "src/term-data-store/term-data-store.php",
                     "src/feature-flags/functions.php",
-                    "src/post-publish-pipeline/functions.php"
+                    "src/post-publish-pipeline/functions.php",
+                    "src/signed-fetch/functions.php",
+                    "src/concurrency/functions.php"
                 ]
             },
             "license": [
