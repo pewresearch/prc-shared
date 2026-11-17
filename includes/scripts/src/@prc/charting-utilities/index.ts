@@ -49,6 +49,7 @@ export * from './types/heatMapTable';
 export {
 	useSize,
 	useSeriesMask,
+	useDismissTooltipOnSeriesMask,
 	useDarkMode,
 	useLocalStorage,
 	useMedia,
@@ -172,6 +173,18 @@ export {
 	seriesMaskShouldHideTooltip,
 } from './utilities/seriesMask';
 export type { SeriesMaskView } from './utilities/seriesMask';
+export {
+	alignItemsFromVerticalAnchor,
+	cssTextAlignFromAnchor,
+	dominantBaselineFromVerticalAnchor,
+	legendLabelTextStyle,
+	resolveLegendTextAnchor,
+} from './utilities/legendTextLayout';
+export type {
+	LegendTextAnchor,
+	LegendTextLayoutInput,
+	LegendVerticalAnchor,
+} from './utilities/legendTextLayout';
 export { createTopologyLoader } from './utilities/loadTopology';
 export { MAP_REGION_PRESETS } from './utilities/mapRegionPresets';
 export type { MapRegionPreset } from './utilities/mapRegionPresets';

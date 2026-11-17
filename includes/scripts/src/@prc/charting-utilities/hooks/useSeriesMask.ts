@@ -81,3 +81,21 @@ export function useSeriesMask(input: UseSeriesMaskInput): SeriesMaskView {
 		[armed, hidden, toggle, revision]
 	);
 }
+
+/**
+ * Close an open tooltip when a legend click changes the hide set.
+ * A hidden mark may unmount before mouseleave fires.
+ *
+ * @param view        Series mask view from chart context.
+ * @param hideTooltip Tooltip closer from the chart.
+ */
+export function useDismissTooltipOnSeriesMask(
+	view: SeriesMaskView,
+	hideTooltip: () => void
+): void {
+	useEffect(() => {
+		if (view.armed && view.revision > 0) {
+			hideTooltip();
+		}
+	}, [view.armed, view.revision, hideTooltip]);
+}

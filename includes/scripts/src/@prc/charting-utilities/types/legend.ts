@@ -42,7 +42,28 @@ export type LegendItemCustomization = {
 	/** Unitless line-height multiplier for wrapped legend text (e.g. 1.4). */
 	lineHeight?: number;
 
-	/** Horizontal text alignment for multi-line legend labels. */
+	/**
+	 * Horizontal alignment. Same values as text annotations.
+	 * Saved `textAlign` values still render when this is unset.
+	 */
+	textAnchor?: 'start' | 'middle' | 'end';
+
+	/** Vertical alignment. Same values as text annotations. */
+	verticalAnchor?: 'start' | 'middle' | 'end';
+
+	/** Rotation in degrees, clockwise around the item. */
+	rotation?: number;
+
+	/**
+	 * Label opacity from 0 to 1.
+	 * Click-to-hide multiplies this with the hidden-item opacity.
+	 */
+	opacity?: number;
+
+	/**
+	 * Older horizontal alignment (`left` | `center` | `right`).
+	 * New edits write `textAnchor`. This still renders when `textAnchor` is unset.
+	 */
 	textAlign?: 'left' | 'center' | 'right';
 
 	/** Letter spacing for legend label text (px). */

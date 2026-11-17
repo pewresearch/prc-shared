@@ -5,6 +5,18 @@ export const HIDDEN_LEGEND_ITEM_OPACITY = 0.2 as const;
 export const SERIES_MASK_CHART_TYPES: readonly ChartLayoutType[] = [
 	'diverging-bar',
 	'scatter',
+	'bar',
+	'stacked-bar',
+	'exploded-bar',
+	'line',
+	'area',
+	'stacked-area',
+	'pie',
+	'waffle',
+	'treemap',
+	'dot-plot',
+	'radar',
+	'bee-swarm',
 ];
 
 export const EMPTY_HIDDEN: ReadonlySet<string> = new Set();
@@ -107,6 +119,11 @@ export type SeriesMaskView = {
 	armed: boolean;
 	isHidden: (key: string) => boolean;
 	legendOpacity: (key: string) => 1 | typeof HIDDEN_LEGEND_ITEM_OPACITY;
+	/**
+	 * Series keys that stay on the plot. Same array when the mask is off or
+	 * nothing is hidden, so scale memos do not rebuild.
+	 */
+	filterKeys: <T extends string>(keys: readonly T[]) => readonly T[];
 	toggle: (key: string) => void;
 	/** Increments when the hide set changes (armed charts only). */
 	revision: number;
@@ -116,6 +133,7 @@ export const INERT_SERIES_MASK: SeriesMaskView = {
 	armed: false,
 	isHidden: () => false,
 	legendOpacity: () => 1,
+	filterKeys: (keys) => keys,
 	toggle: () => undefined,
 	revision: 0,
 };
@@ -168,6 +186,13 @@ export function createSeriesMaskView(input: {
 		armed: true,
 		isHidden: (key) => input.hidden.has(key),
 		legendOpacity: (key) => legendItemOpacity(key, input.hidden),
+		filterKeys: (keys) => {
+			if (keys.length === 0 || input.hidden.size === 0) {
+				return keys;
+			}
+			const next = keys.filter((key) => !input.hidden.has(key));
+			return next.length === keys.length ? keys : next;
+		},
 		toggle: input.toggle,
 		revision: input.revision ?? 0,
 	};

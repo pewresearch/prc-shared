@@ -5,12 +5,12 @@
 Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme
-asset [1m[32mindex.js[39m[22m 143 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m (name: index)
+asset [1m[32mindex.js[39m[22m 144 KiB [1m[32m[emitted][39m[22m [1m[32m[minimized][39m[22m (name: index)
 asset [1m[32mindex.asset.php[39m[22m 115 bytes [1m[32m[emitted][39m[22m (name: index)
-Entrypoint [1mindex[39m[22m 143 KiB = [1m[32mindex.js[39m[22m 143 KiB [1m[32mindex.asset.php[39m[22m 115 bytes
-orphan modules 395 KiB [1m[33m[orphan][39m[22m 293 modules
+Entrypoint [1mindex[39m[22m 144 KiB = [1m[32mindex.js[39m[22m 144 KiB [1m[32mindex.asset.php[39m[22m 115 bytes
+orphan modules 399 KiB [1m[33m[orphan][39m[22m 294 modules
 runtime modules 670 bytes 3 modules
-built modules 377 KiB [1m[33m[built][39m[22m
-  [1m./index.js + 192 modules[39m[22m 356 KiB [1m[31m[not cacheable][39m[22m [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+built modules 380 KiB [1m[33m[built][39m[22m
+  [1m./index.js + 193 modules[39m[22m 359 KiB [1m[31m[not cacheable][39m[22m [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
   [1m../../../../../../../node_modules/d3-regression/dist/d3-regression.js[39m[22m 21.4 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 20028 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 7617 ms

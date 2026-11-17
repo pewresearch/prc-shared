@@ -1,5 +1,5 @@
 export { useSize } from './useSize';
-export { useSeriesMask } from './useSeriesMask';
+export { useSeriesMask, useDismissTooltipOnSeriesMask } from './useSeriesMask';
 export type { UseSeriesMaskInput } from './useSeriesMask';
 export { useDarkMode } from './useDarkMode';
 export { useLocalStorage } from './useLocalStorage';
