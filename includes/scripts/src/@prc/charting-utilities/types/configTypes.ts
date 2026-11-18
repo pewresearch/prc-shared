@@ -34,6 +34,7 @@ import { Sankey } from './sankey';
 import { SmallMultiples } from './smallMultiples';
 import { Waffle } from './waffle';
 import { HeatMapTable } from './heatMapTable';
+import { Hemicycle } from './hemicycle';
 
 type BaseConfig = {
 	animate: Animate;
@@ -50,6 +51,7 @@ type BaseConfig = {
 	events: Events;
 	explodedBar: ExplodedBar;
 	heatMapTable: HeatMapTable;
+	hemicycle: Hemicycle;
 	labels: Labels;
 	layout: Layout;
 	legend: Legend;
@@ -115,4 +117,5 @@ export type {
 	SmallMultiples,
 	Waffle,
 	HeatMapTable,
+	Hemicycle,
 };

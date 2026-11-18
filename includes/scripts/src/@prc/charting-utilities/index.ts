@@ -44,6 +44,7 @@ export * from './types/treemap';
 export * from './types/sankey';
 export * from './types/waffle';
 export * from './types/heatMapTable';
+export * from './types/hemicycle';
 
 // React hooks
 export {
@@ -75,6 +76,8 @@ export type {
 // Pure utilities
 export { DEFAULT_FONT_FAMILY } from './utilities/defaultFontFamily';
 export { default as baseConfig } from './utilities/baseConfig';
+export { orderRows } from './utilities/orderRows';
+export type { OrderRowsOptions } from './utilities/orderRows';
 export {
 	randomDataPoints,
 	randomDate,
@@ -272,6 +275,21 @@ export type {
 	WafflePanelValue,
 	ResolveWaffleCellSizeArgs,
 } from './waffle';
+export {
+	computeHemicycleSeats,
+	allocateHemicycleSeatCounts,
+	resolveHemicycleRows,
+	computeHemicycleBarSegments,
+	computeHemicycleSquareScale,
+	hemicycleTooltipPoint,
+} from './hemicycle';
+export type {
+	HemicycleCategoryInput,
+	HemicycleSeat,
+	HemicycleBarSegment,
+	ComputeHemicycleSeatsArgs,
+	ComputeHemicycleSeatsResult,
+} from './hemicycle';
 export {
 	computeHeatMapTableCells,
 	computeHeatMapTableLayout,

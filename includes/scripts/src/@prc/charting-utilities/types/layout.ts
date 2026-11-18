@@ -25,7 +25,8 @@ export type ChartLayoutType =
 	| 'radar'
 	| 'small-multiples'
 	| 'waffle'
-	| 'heat-map-table';
+	| 'heat-map-table'
+	| 'hemicycle';
 
 export type LayoutOrientation = 'vertical' | 'horizontal';
 

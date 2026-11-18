@@ -114,7 +114,8 @@ const getSharedProps = ({
 			independentAxis,
 			independentScale,
 			innerWidth,
-			gridHeight
+			gridHeight,
+			config.dataRender.xFormat
 		),
 		tooltipVisible: getTooltipVisible(layout, chartWidth, tooltip),
 		annotationsVisible: getTextVisible(layout, chartWidth, annotations),

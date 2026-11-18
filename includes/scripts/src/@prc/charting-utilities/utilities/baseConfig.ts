@@ -623,6 +623,19 @@ const baseConfig: BaseConfig = {
 		minCellWidth: 40,
 		minCellHeight: 28,
 	},
+	hemicycle: {
+		seatShape: 'circle',
+		seatGap: 0.15,
+		rows: null,
+		innerRadiusRatio: 0.4,
+		totalSeats: null,
+		emptyFill: '#E6E7E8',
+		stackedBar: {
+			active: false,
+			height: 16,
+			gap: 24,
+		},
+	},
 };
 
 export default baseConfig;

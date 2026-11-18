@@ -15,6 +15,7 @@ const getFlattenedData = (data: any) => {
 			const flatRow = Object.keys(row).reduce((acc, key) => {
 				const coercible = !(
 					row[key] === '' ||
+					row[key] instanceof Date ||
 					isNaN(row[key]) ||
 					typeof row[key] === 'boolean'
 				);

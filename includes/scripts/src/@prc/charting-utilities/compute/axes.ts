@@ -5,6 +5,7 @@ import {
 	decodeHtmlEntities,
 } from '../utilities/helpers';
 import { stripRichText } from '../utilities/richText';
+import { bandTimeTicks, isBandScale } from './bandTimeTicks';
 import { resolveTickLabelEntry } from '../utilities/tickLabelKeys';
 import type { TickLabelEntries } from '../utilities/tickLabelKeys';
 import { timeFormat, timeParse } from 'd3-time-format';
@@ -220,17 +221,18 @@ const getAxisProps = (
 			}
 		: null;
 
-	// Parse tickValues if they're strings and scale is time
 	let parsedTickValues = config.tickValues;
 	if (config.scale === 'time' && config.tickValues) {
-		parsedTickValues = config.tickValues.map((tick) => {
-			// If it's already a Date, return it
-			if (tick instanceof Date) {
-				return tick;
-			}
-			// If it's a string or number, parse it
-			return newDateByFormat(String(tick), inputDateFormat);
-		}) as any;
+		parsedTickValues = isBandScale(scale)
+			? bandTimeTicks(config.tickValues, scale, inputDateFormat)
+			: (config.tickValues.map((tick) => {
+					// If it's already a Date, return it
+					if (tick instanceof Date) {
+						return tick;
+					}
+					// If it's a string or number, parse it
+					return newDateByFormat(String(tick), inputDateFormat);
+				}) as any);
 	}
 
 	return {
