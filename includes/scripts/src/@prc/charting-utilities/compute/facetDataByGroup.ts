@@ -19,6 +19,10 @@ export type SmallMultiplesGroupPanel = {
  *
  * Complements `facetDataByColumn` (one panel per column, single series).
  * Panel order follows first appearance of each group value in the data.
+ * @param data
+ * @param groupKey
+ * @param categories
+ * @param groupOrder
  */
 export function facetDataByGroup(
 	data: FlatData[] | null | undefined,

@@ -421,7 +421,11 @@ const baseConfig: BaseConfig = {
 			offsetX: -20,
 			separator: true,
 			separatorOffsetX: -1,
+			separatorStroke: 'light-dark(#C6C8CA, #404345)',
 			category: 'y4',
+		},
+		zeroLine: {
+			stroke: '',
 		},
 	},
 	diffColumn: {

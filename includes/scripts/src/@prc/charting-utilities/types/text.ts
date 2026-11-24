@@ -1,9 +1,21 @@
 // Text annotation types
 type TextAnnotation = {
 	id?: string;
+	/** Missing means `'text'`, so saved annotations keep rendering as text. */
+	kind?: 'text' | 'image';
 	x: number;
 	y: number;
-	text: string;
+	text?: string;
+	/** Image annotations: Media Library attachment ID and URL (PNG or Safe SVG–sanitized SVG). */
+	mediaId?: number;
+	src?: string;
+	/** Image annotations: size in layout px, like `fontSize`. */
+	width?: number;
+	height?: number;
+	/** Image annotations: fit the image inside width × height without distortion. Default true. */
+	keepAspectRatio?: boolean;
+	/** Image annotations: accessible name. Empty means decorative (`aria-hidden`). */
+	alt?: string;
 	fontSize?: number;
 	fontWeight?: 'normal' | 'bold' | '600' | '700';
 	fontStyle?: 'normal' | 'italic';

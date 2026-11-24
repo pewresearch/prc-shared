@@ -1,5 +1,5 @@
 import type { FlatData } from '../types/flatData';
-import type { WaffleCategoryInput } from './computeWaffleCells';
+import type { WaffleCategoryInput } from './cellGrid';
 
 export function getWaffleCategoryInputs(
 	flattenedData: FlatData[],

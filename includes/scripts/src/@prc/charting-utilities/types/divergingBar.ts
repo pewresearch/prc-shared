@@ -9,7 +9,12 @@ export type DivergingBar = {
 		offsetX: number;
 		separator: boolean;
 		separatorOffsetX: number;
+		separatorStroke: string;
 		category: string;
+	};
+	zeroLine: {
+		/** Empty string follows `dependentAxis.axis.stroke`. */
+		stroke: string;
 	};
 	/**
 	 * Optional translucent "ghost" overlay rendered on top of the primary

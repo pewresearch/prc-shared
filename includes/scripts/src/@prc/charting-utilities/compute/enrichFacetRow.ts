@@ -1,6 +1,9 @@
 import type { FlatData } from '../types/flatData';
 
-/** Underscore-prefixed row fields are customization metadata, not series columns. */
+/**
+ * Underscore-prefixed row fields are customization metadata, not series columns.
+ * @param key
+ */
 export function isFacetMetaKey(key: string): boolean {
 	return key.startsWith('__');
 }
@@ -8,6 +11,7 @@ export function isFacetMetaKey(key: string): boolean {
 /**
  * Coerce a series cell to a plottable number. Matches `hasCategoryValue` /
  * `toFiniteNumber`: empty cells stay missing so they are not plotted as 0.
+ * @param value
  */
 export function parseFacetNumeric(value: unknown): number | null {
 	if (value === null || value === undefined || value === '') {
@@ -21,6 +25,8 @@ export function parseFacetNumeric(value: unknown): number | null {
  * Build a panel/series row from a wide or long-format source row.
  * Keeps tooltip/label customization bags so labels, tooltips, and editor
  * popovers can resolve against the series category key.
+ * @param row
+ * @param seriesKey
  */
 export function enrichFacetRow(row: FlatData, seriesKey: string): FlatData {
 	const y = parseFacetNumeric(row[seriesKey]);

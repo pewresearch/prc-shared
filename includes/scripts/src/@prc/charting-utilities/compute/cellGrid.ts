@@ -61,6 +61,9 @@ function resolveGridDimensions(columns?: number, rows?: number) {
  * - Explicit positive max wins.
  * - Portion defaults to 100.
  * - Whole defaults to the sum of absolute values (pie parity).
+ * @param mode
+ * @param categories
+ * @param max
  */
 export function resolveWaffleMax(
 	mode: WaffleDisplayMode,
@@ -83,6 +86,9 @@ export function resolveWaffleMax(
 /**
  * Allocate cells from value/max against the grid capacity.
  * Sum of filled cells is ≤ totalCells; remainder stays empty.
+ * @param categories
+ * @param max
+ * @param totalCells
  */
 export function allocateWaffleCellCounts(
 	categories: Array<{ key: string; value: number }>,
@@ -126,7 +132,7 @@ export function allocateWaffleCellCounts(
 		)
 	);
 
-	let assigned = withFractions.reduce(
+	const assigned = withFractions.reduce(
 		(sum, category) => sum + category.filledCells,
 		0
 	);

@@ -1,4 +1,4 @@
-import type { HemicycleSeat } from './computeHemicycleSeats';
+import type { HemicycleSeat } from './seatArcs';
 
 type Point = [number, number];
 

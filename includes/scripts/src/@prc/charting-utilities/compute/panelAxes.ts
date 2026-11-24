@@ -3,8 +3,10 @@ import type { SmallMultiplesAxisTreatment } from '../types/smallMultiples';
 /** Alias of config `axisTreatment` — keep planner + theme schema in lockstep. */
 export type AxisTreatment = SmallMultiplesAxisTreatment;
 
-/** vertical = line/column (value on left, category/time on bottom).
- *  horizontal = bar (category on left, value on bottom). */
+/**
+ * vertical = line/column (value on left, category/time on bottom).
+ *  horizontal = bar (category on left, value on bottom).
+ */
 export type PanelOrientation = 'vertical' | 'horizontal';
 
 export type PlanPanelAxesArgs = {
@@ -40,6 +42,14 @@ export type PanelAxisPlan = {
  *
  * Insets are reserved whenever the axis that occupies that edge is active,
  * even when ticks are hidden, so plot fields align across the row.
+ * @param root0
+ * @param root0.axisTreatment
+ * @param root0.col
+ * @param root0.dependentAxisActive
+ * @param root0.independentAxisActive
+ * @param root0.leftInset
+ * @param root0.bottomInset
+ * @param root0.orientation
  */
 export function planPanelAxes({
 	axisTreatment,

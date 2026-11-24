@@ -3,6 +3,8 @@ import type { SmallMultiplesGroupPanel } from './facetDataByGroup';
 /**
  * Shared ordinal domain for pie-panel slice categories (`row.x`).
  * First-seen order across panels, optionally reordered by `legend.categories`.
+ * @param panels
+ * @param legendCategories
  */
 export function resolveSliceDomain(
 	panels: SmallMultiplesGroupPanel[] | null | undefined,

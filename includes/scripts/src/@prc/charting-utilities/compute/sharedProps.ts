@@ -1,44 +1,17 @@
-// shared hooks
 import React from 'react';
 import { getAria } from './aria';
 import { getAxisProps } from './axes';
 import { getGridProps } from './grid';
-import { getLabelFormat, getLabelProps, positionBarLabel } from './labels';
+import { getLabelProps } from './labels';
 import { getLegendProps } from './legend';
-import { getLineProps } from './line';
 import { getChartDimensions } from './size';
-import {
-	getLocalPoint,
-	svgUserPointToViewport,
-	getTooltipFormat,
-	getTooltipHeaderFormat,
-	getTooltipVisible,
-	getTooltipMapDeemphasisProps,
-	tooltipFormatPoint,
-} from './tooltips';
-import { resolveNodeShapeColors } from './nodes';
-import {
-	buildBeeswarmGroupCenters,
-	computeBeeswarmForce,
-} from './beeswarmForce';
+import { getTooltipVisible } from './tooltips';
 import { getVoronoiProps } from './voronoi';
+import { getTextVisible } from './text';
 import type { FlatData } from '../types/flatData';
 import type { TableData } from '../types/tableData';
 import type { BaseConfig } from '../types/configTypes';
 import type { Size } from '../types/windowSize';
-import { getTextVisible } from './text';
-import {
-	getFlattenedData,
-	getRowDisplayText,
-	getGroupedData,
-	createGroupBandScale,
-	getGroupPositioningHorizontal,
-	getGroupPositioningVertical,
-	getGroupPositioningPie,
-} from './data';
-import { getGroupColorDomain } from './groupColorDomain';
-import { linearBarSpan, linearBarBaseline } from './linearBarSpan';
-import { domainCrossesZero } from './domainCrossesZero';
 
 type SharedProps = {
 	config: BaseConfig;
@@ -53,7 +26,7 @@ type SharedProps = {
 	dependentTicksComponent?: (props: any) => React.ReactElement;
 };
 
-const getSharedProps = ({
+export const getSharedProps = ({
 	config,
 	data,
 	size,
@@ -125,41 +98,3 @@ const getSharedProps = ({
 		actualContentHeight: gridHeight,
 	};
 };
-
-export {
-	getSharedProps,
-	getAria,
-	getAxisProps,
-	getGridProps,
-	getLabelFormat,
-	getLabelProps,
-	positionBarLabel,
-	getLegendProps,
-	getLineProps,
-	getChartDimensions,
-	getLocalPoint,
-	svgUserPointToViewport,
-	getTooltipFormat,
-	getTooltipHeaderFormat,
-	getTooltipVisible,
-	getTextVisible,
-	getVoronoiProps,
-	getFlattenedData,
-	getRowDisplayText,
-	getGroupedData,
-	getGroupColorDomain,
-	createGroupBandScale,
-	linearBarSpan,
-	linearBarBaseline,
-	domainCrossesZero,
-	getGroupPositioningHorizontal,
-	getGroupPositioningVertical,
-	getGroupPositioningPie,
-	getTooltipMapDeemphasisProps,
-	tooltipFormatPoint,
-	resolveNodeShapeColors,
-	buildBeeswarmGroupCenters,
-	computeBeeswarmForce,
-};
-
-export { canonicalRowValue, selectPlotRows } from './selectPlotRows';

@@ -1,5 +1,5 @@
 import type { FlatData } from '../types/flatData';
-import type { HemicycleCategoryInput } from './computeHemicycleSeats';
+import type { HemicycleCategoryInput } from './seatArcs';
 
 /**
  * Tooltip value for one party: the seats drawn after the chamber cap, not the

@@ -7,6 +7,8 @@ export type SharedDomainOptions = {
 
 /**
  * Compute a shared linear y-domain across all small-multiples panels.
+ * @param panels
+ * @param options
  */
 export function computeSharedDomain(
 	panels: SmallMultiplesPanel[] | null | undefined,

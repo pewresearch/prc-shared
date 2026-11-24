@@ -16,6 +16,11 @@ export type WaffleLayout = {
 /**
  * Fixed cell-size layout so changing columns/rows keeps visual scale persistent.
  * `cellGap` is a fraction of cellSize (padding between cells).
+ * @param root0
+ * @param root0.columns
+ * @param root0.rows
+ * @param root0.cellSize
+ * @param root0.cellGap
  */
 export function computeWaffleLayout({
 	columns,

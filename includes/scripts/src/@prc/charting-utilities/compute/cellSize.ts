@@ -16,6 +16,8 @@ export type ResolveWaffleCellSizeArgs = {
 /**
  * Span factor for N cells with fractional gap between them:
  * width = cellSize * (n + (n - 1) * gap)
+ * @param count
+ * @param cellGap
  */
 export function waffleSpanFactor(count: number, cellGap: number): number {
 	const n = Math.max(1, count);
@@ -25,6 +27,13 @@ export function waffleSpanFactor(count: number, cellGap: number): number {
 
 /**
  * Largest square cell size that fits the grid in the available box.
+ * @param root0
+ * @param root0.columns
+ * @param root0.rows
+ * @param root0.cellGap
+ * @param root0.availableWidth
+ * @param root0.availableHeight
+ * @param root0.minCellSize
  */
 export function fitWaffleCellSize({
 	columns,
@@ -56,6 +65,15 @@ export function fitWaffleCellSize({
 
 /**
  * Resolve the rendered cell size for fixed / auto / clamp modes.
+ * @param root0
+ * @param root0.mode
+ * @param root0.cellSize
+ * @param root0.columns
+ * @param root0.rows
+ * @param root0.cellGap
+ * @param root0.availableWidth
+ * @param root0.availableHeight
+ * @param root0.minCellSize
  */
 export function resolveWaffleCellSize({
 	mode = 'clamp',
@@ -73,6 +91,11 @@ export function resolveWaffleCellSize({
 			? Number(cellSize)
 			: 14
 	);
+
+	if (mode === 'fixed') {
+		return preferred;
+	}
+
 	const fitted = fitWaffleCellSize({
 		columns,
 		rows,
@@ -81,10 +104,6 @@ export function resolveWaffleCellSize({
 		availableHeight,
 		minCellSize,
 	});
-
-	if (mode === 'fixed') {
-		return preferred;
-	}
 	if (mode === 'auto') {
 		return fitted;
 	}
