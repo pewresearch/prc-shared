@@ -53,6 +53,8 @@ export {
 	useDismissTooltipOnSeriesMask,
 } from './hooks/useSeriesMask';
 export type { UseSeriesMaskInput } from './hooks/useSeriesMask';
+export { useDragGesture } from './hooks/useDragGesture';
+export type { DragGesture, DragMoveResult } from './hooks/useDragGesture';
 export { useDarkMode } from './hooks/useDarkMode';
 export { useLocalStorage } from './hooks/useLocalStorage';
 export { useMedia } from './hooks/useMedia';
@@ -183,6 +185,17 @@ export {
 } from './utilities/seriesMask';
 export type { SeriesMaskView } from './utilities/seriesMask';
 export {
+	DRAG_GESTURE_IDLE,
+	dragGestureAllowsSync,
+	releasePointerCaptureSafely,
+	stepDragGesture,
+} from './utilities/dragGesture';
+export type {
+	DragGestureEvent,
+	DragGesturePhase,
+	DragGestureState,
+} from './utilities/dragGesture';
+export {
 	alignItemsFromVerticalAnchor,
 	cssTextAlignFromAnchor,
 	dominantBaselineFromVerticalAnchor,
@@ -195,6 +208,15 @@ export type {
 	LegendVerticalAnchor,
 } from './utilities/legendTextLayout';
 export { createTopologyLoader } from './utilities/loadTopology';
+export { createLazyComponent } from './utilities/lazyComponent';
+export {
+	createSuspenseResource,
+	retryFailedResources,
+	stepSuspenseResource,
+	type SuspenseResource,
+	type SuspenseResourceEvent,
+	type SuspenseResourceStatus,
+} from './utilities/suspenseResource';
 export { MAP_REGION_PRESETS } from './utilities/mapRegionPresets';
 export type { MapRegionPreset } from './utilities/mapRegionPresets';
 export * from './utilities/colorPalettes';

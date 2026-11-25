@@ -13,4 +13,4 @@ runtime modules 937 bytes 4 modules
 built modules 47.9 KiB [1m[33m[built][39m[22m
   [1m./exports.js + 35 modules[39m[22m 42.9 KiB [1m[31m[not cacheable][39m[22m [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
   [1m../../../../../../presence-api/assets/js/tab-coordinator.js[39m[22m 4.92 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 4400 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 4728 ms

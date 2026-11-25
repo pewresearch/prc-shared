@@ -12,4 +12,4 @@ runtime modules 670 bytes 3 modules
 cacheable modules 3.37 KiB
   [1m./index.js[39m[22m 33 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
   [1m../../../../../node_modules/jabber/build/index.js[39m[22m 3.33 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 1563 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 2264 ms

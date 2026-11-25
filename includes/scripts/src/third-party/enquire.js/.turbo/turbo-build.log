@@ -16,4 +16,4 @@ modules by path [1m../../../../../node_modules/enquire.js/src/*.js[39m[22m 8.
   [1m../../../../../node_modules/enquire.js/src/Util.js[39m[22m 966 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
   [1m../../../../../node_modules/enquire.js/src/QueryHandler.js[39m[22m 1.91 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
 [1m./index.js[39m[22m 475 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
-webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 3029 ms
+webpack 5.106.2 compiled [1m[32msuccessfully[39m[22m in 3283 ms
